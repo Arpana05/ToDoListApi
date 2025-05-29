@@ -439,6 +439,22 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Riok.Mapperly/4.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Riok.Mapperly.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Riok.Mapperly.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/Riok.Mapperly.targets": {}
+        }
+      },
       "SharpCompress/0.30.1": {
         "type": "package",
         "compile": {
@@ -1242,6 +1258,32 @@
         "nswag.generation.aspnetcore.nuspec"
       ]
     },
+    "Riok.Mapperly/4.2.1": {
+      "sha512": "UZeQSieVlHr48t64J4k2s/lvbMeCXvzsXqV2A/0wyNdPpW8Cyn47+9mfWFJjouPxoSFfEhDbxg+WRbFIHvq4Zw==",
+      "type": "package",
+      "path": "riok.mapperly/4.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "analyzers/roslyn4.0/dotnet/cs/Riok.Mapperly.Abstractions.dll",
+        "analyzers/roslyn4.0/dotnet/cs/Riok.Mapperly.dll",
+        "analyzers/roslyn4.11/dotnet/cs/Riok.Mapperly.Abstractions.dll",
+        "analyzers/roslyn4.11/dotnet/cs/Riok.Mapperly.dll",
+        "analyzers/roslyn4.4/dotnet/cs/Riok.Mapperly.Abstractions.dll",
+        "analyzers/roslyn4.4/dotnet/cs/Riok.Mapperly.dll",
+        "analyzers/roslyn4.5/dotnet/cs/Riok.Mapperly.Abstractions.dll",
+        "analyzers/roslyn4.5/dotnet/cs/Riok.Mapperly.dll",
+        "analyzers/roslyn4.7/dotnet/cs/Riok.Mapperly.Abstractions.dll",
+        "analyzers/roslyn4.7/dotnet/cs/Riok.Mapperly.dll",
+        "build/Riok.Mapperly.targets",
+        "lib/netstandard2.0/Riok.Mapperly.Abstractions.dll",
+        "lib/netstandard2.0/Riok.Mapperly.Abstractions.xml",
+        "logo.png",
+        "riok.mapperly.4.2.1.nupkg.sha512",
+        "riok.mapperly.nuspec"
+      ]
+    },
     "SharpCompress/0.30.1": {
       "sha512": "XqD4TpfyYGa7QTPzaGlMVbcecKnXy4YmYLDWrU+JIj7IuRNl7DH2END+Ll7ekWIY8o3dAMWLFDE1xdhfIWD1nw==",
       "type": "package",
@@ -1590,6 +1632,7 @@
       "Microsoft.AspNetCore.OpenApi >= 9.0.5",
       "MongoDB.Driver >= 3.4.0",
       "NSwag.AspNetCore >= 14.4.0",
+      "Riok.Mapperly >= 4.2.1",
       "Swashbuckle.AspNetCore >= 8.1.1"
     ]
   },
@@ -1654,6 +1697,10 @@
           "NSwag.AspNetCore": {
             "target": "Package",
             "version": "[14.4.0, )"
+          },
+          "Riok.Mapperly": {
+            "target": "Package",
+            "version": "[4.2.1, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

@@ -1,5 +1,6 @@
 using ToDoListApi.Models;
 using ToDoListApi.Services;
+using ToDoListApi.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,10 @@ builder.Services.Configure<ToDoListDatabaseSettings>(
     builder.Services.AddSingleton<ItemsService>();
     builder.Services.AddSingleton<CategoriesService>();
     builder.Services.AddSingleton<UsersService>();
+
+    builder.Services.AddSingleton<ItemMapper>();
+    builder.Services.AddSingleton<CategoryMapper>();
+    builder.Services.AddSingleton<UserMapper>();
 
     builder.Services.AddControllers()
     .AddJsonOptions(
