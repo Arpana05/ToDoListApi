@@ -14,11 +14,14 @@ public class CategoriesController : ControllerBase
         _categoriesService = categoriesService;
 
     [HttpGet]
-    public async Task<List<Category>> Get() =>
-        await _categoriesService.GetAsync();
+    public async Task<ActionResult<List<ReadCategoryDto>>> Get()
+    {
+        var categories = await _categoriesService.GetAsync();
+        return Ok(categories);
+    }
 
     [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<Category>> Get(string id)
+    public async Task<ActionResult<ReadCategoryDto>> Get(string id)
     {
         var category = await _categoriesService.GetAsync(id);
 
@@ -27,32 +30,28 @@ public class CategoriesController : ControllerBase
             return NotFound();
         }
 
-        return category;
+        return Ok(category);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Category newCategory)
+    public async Task<ActionResult<ReadCategoryDto>> Post(CreateCategoryDto newCategoryDto)
     {
-        await _categoriesService.CreateAsync(newCategory);
+        var createdCategory = await _categoriesService.CreateAsync(newCategoryDto);
 
-        return CreatedAtAction(nameof(Get), new { id = newCategory.Id }, newCategory);
+        return CreatedAtAction(nameof(Get), new { id = createdCategory.Id }, createdCategory);
     }
 
     [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Update(string id, Category updatedCategory)
+    public async Task<ActionResult<ReadCategoryDto>> Update(string id, UpdateCategoryDto updateDto)
     {
-        var category = await _categoriesService.GetAsync(id);
+        var updatedCategory = await _categoriesService.UpdateAsync(id, updateDto);
 
-        if (category is null)
+        if (updatedCategory is null)
         {
             return NotFound();
         }
 
-        updatedCategory.Id = category.Id;
-
-        await _categoriesService.UpdateAsync(id, updatedCategory);
-
-        return NoContent();
+        return Ok(updatedCategory);
     }
 
     [HttpDelete("{id:length(24)}")]
