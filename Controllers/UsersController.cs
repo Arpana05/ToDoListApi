@@ -14,11 +14,14 @@ public class UsersController : ControllerBase
         _usersService = usersService;
 
     [HttpGet]
-    public async Task<List<User>> Get() =>
-        await _usersService.GetAsync();
+    public async Task<ActionResult<List<ReadUserDto>>> Get()
+    {
+        var users = await _usersService.GetAsync();
+        return Ok(users);
+    }
 
     [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<User>> Get(string id)
+    public async Task<ActionResult<ReadUserDto>> Get(string id)
     {
         var user = await _usersService.GetAsync(id);
 
@@ -27,32 +30,27 @@ public class UsersController : ControllerBase
             return NotFound();
         }
 
-        return user;
+        return Ok(user);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(User newUser)
+    public async Task<ActionResult<ReadUserDto>> Post(CreateUserDto newUserDto)
     {
-        await _usersService.CreateAsync(newUser);
-
-        return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+        var createdUser = await _usersService.CreateAsync(newUserDto);
+        return CreatedAtAction(nameof(Get), new { id = createdUser.Id }, createdUser);
     }
 
     [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Update(string id, User updatedUser)
+    public async Task<IActionResult> Update(string id, UpdateUserDto updatedUserDto)
     {
-        var user = await _usersService.GetAsync(id);
+        var updatedUser = await _usersService.UpdateAsync(id, updatedUserDto);
 
-        if (user is null)
+        if (updatedUser is null)
         {
             return NotFound();
         }
 
-        updatedUser.Id = user.Id;
-
-        await _usersService.UpdateAsync(id, updatedUser);
-
-        return NoContent();
+        return Ok(updatedUser);
     }
 
     [HttpDelete("{id:length(24)}")]
@@ -66,7 +64,6 @@ public class UsersController : ControllerBase
         }
 
         await _usersService.RemoveAsync(id);
-
         return NoContent();
     }
 }

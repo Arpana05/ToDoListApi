@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kYuktnlwPak=",
+  "dgSpecHash": "8MxWzmif0O4=",
   "success": true,
   "projectFilePath": "C:\\projects\\MongoDB\\ToDoListApi\\ToDoListApi.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\nswag.core.yaml\\14.4.0\\nswag.core.yaml.14.4.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\nswag.generation\\14.4.0\\nswag.generation.14.4.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\nswag.generation.aspnetcore\\14.4.0\\nswag.generation.aspnetcore.14.4.0.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\riok.mapperly\\4.2.1\\riok.mapperly.4.2.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\swashbuckle.aspnetcore\\8.1.1\\swashbuckle.aspnetcore.8.1.1.nupkg.sha512",
