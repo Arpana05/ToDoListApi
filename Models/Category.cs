@@ -14,4 +14,5 @@ public class Category
     [JsonPropertyName("Name")]
     public required string CategoryName { get; set; }
     public string? Description { get; set; }
+    public string UserId { get; set; } = null!;
 }

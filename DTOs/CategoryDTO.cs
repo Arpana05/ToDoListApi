@@ -1,4 +1,4 @@
-namespace ToDoListApi.Models
+namespace ToDoListApi.DTOs
 {
     public class CreateCategoryDto
     {

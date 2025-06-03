@@ -48,3 +48,14 @@ C:\projects\MongoDB\ToDoListApi\obj\Debug\net9.0\refint\ToDoListApi.dll
 C:\projects\MongoDB\ToDoListApi\obj\Debug\net9.0\ToDoListApi.pdb
 C:\projects\MongoDB\ToDoListApi\obj\Debug\net9.0\ToDoListApi.genruntimeconfig.cache
 C:\projects\MongoDB\ToDoListApi\obj\Debug\net9.0\ref\ToDoListApi.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Riok.Mapperly.Abstractions.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\projects\MongoDB\ToDoListApi\obj\Debug\net9.0\ToDoListApi.sourcelink.json

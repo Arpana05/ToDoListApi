@@ -1,9 +1,12 @@
 using ToDoListApi.Models;
 using ToDoListApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ToDoListApi.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
@@ -13,19 +16,35 @@ public class UsersController : ControllerBase
     public UsersController(UsersService usersService) =>
         _usersService = usersService;
 
-    [HttpGet]
-    public async Task<ActionResult<List<ReadUserDto>>> Get()
+
+    [HttpPost("login")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Login(LoginDto dto)
     {
-        var users = await _usersService.GetAsync();
-        return Ok(users);
+        var token = await _usersService.LoginAsync(dto);
+        return Ok(new { Token = token });
     }
 
-    [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<ReadUserDto>> Get(string id)
-    {
-        var user = await _usersService.GetAsync(id);
 
-        if (user is null)
+    [HttpPost("register")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Register(RegisterDto dto)
+    {
+        var user = await _usersService.RegisterAsync(dto);
+        return Ok(user);
+    }
+
+
+    [HttpGet]
+    public async Task<ActionResult<ReadUserDto>> Get()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(userId)) return Unauthorized("User ID not found.");
+
+        var user = await _usersService.GetAsync(userId);
+
+        if (user == null)
         {
             return NotFound();
         }
@@ -33,37 +52,53 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
-    [HttpPost]
-    public async Task<ActionResult<ReadUserDto>> Post(CreateUserDto newUserDto)
-    {
-        var createdUser = await _usersService.CreateAsync(newUserDto);
-        return CreatedAtAction(nameof(Get), new { id = createdUser.Id }, createdUser);
-    }
+//     [HttpGet]
+// public async Task<ActionResult<ReadUserDto>> Get()
+// {
+//     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+//     if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+//     var userWithItems = await _usersService.GetAsync(userId);
+//     if (userWithItems == null) return NotFound();
+
+//     return Ok(userWithItems);
+// }
+
 
     [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Update(string id, UpdateUserDto updatedUserDto)
+    public async Task<ActionResult<ReadUserDto>> UpdateUser(string id, UpdateUserDto dto)
     {
-        var updatedUser = await _usersService.UpdateAsync(id, updatedUserDto);
+        var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        if (updatedUser is null)
+        if (loggedInUserId != id)
         {
-            return NotFound();
+            return Forbid();
         }
 
-        return Ok(updatedUser);
+        var updatedUser = await _usersService.UpdateAsync(id, dto);
+        if (updatedUser == null) return NotFound();
+        {
+            return Ok(updatedUser);
+        }
     }
+
+
 
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var user = await _usersService.GetAsync(id);
+        var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        if (user is null)
+        if (loggedInUserId != id)
         {
-            return NotFound();
+            return Forbid();
         }
+
+        var user = await _usersService.GetAsync(id);
+        if (user == null) return NotFound();
 
         await _usersService.RemoveAsync(id);
         return NoContent();
     }
+
 }

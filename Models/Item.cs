@@ -14,7 +14,7 @@ public class Item
     [JsonPropertyName("Title")]
     public required string ItemTitle { get; set; }
     public string? Description { get; set; }
-    public bool IsCompleted { get; set; }
+    public bool IsCompleted { get; set; } = false;
     public DateTime DueDate { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
