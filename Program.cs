@@ -2,8 +2,11 @@ using ToDoListApi.Models;
 using ToDoListApi.Services;
 using ToDoListApi.Mappers;
 using ToDoListApi.Settings;
+using ToDoListApi.Validators;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +46,12 @@ builder.Services.Configure<ToDoListDatabaseSettings>(
     builder.Services.AddControllers()
     .AddJsonOptions(
         options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+    builder.Services.AddFluentValidationAutoValidation();
+    builder.Services.AddFluentValidationClientsideAdapters();
+    builder.Services.AddValidatorsFromAssemblyContaining<RegisterDtoValidator>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
