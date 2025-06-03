@@ -13,7 +13,7 @@ namespace ToDoListApi.DTOs
         public string? Id { get; set; }
         public string ItemTitle { get; set; } = null!;
         public string? Description { get; set; }
-        public bool IsCompleted { get; set; } = false;
+        public bool IsCompleted { get; set; }
         public DateTime DueDate { get; set; }
         public string CategoryName { get; set; } = null!;
     }
@@ -22,7 +22,7 @@ namespace ToDoListApi.DTOs
     {
         public string ItemTitle { get; set; } = null!;
         public string? Description { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool IsCompleted { get; set; } = false;
         public DateTime DueDate { get; set; }
         public required string CategoryName { get; set; }
     }

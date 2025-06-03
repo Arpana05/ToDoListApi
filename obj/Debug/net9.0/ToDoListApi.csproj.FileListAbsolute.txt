@@ -59,3 +59,6 @@ C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.
 C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\Riok.Mapperly.Abstractions.dll
 C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\projects\MongoDB\ToDoListApi\obj\Debug\net9.0\ToDoListApi.sourcelink.json
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\FluentValidation.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+C:\projects\MongoDB\ToDoListApi\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
